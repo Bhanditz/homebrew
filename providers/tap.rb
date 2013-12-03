@@ -34,6 +34,7 @@ end
 action :tap do
   unless @tap.tapped
     execute "tapping #{new_resource.name}" do
+      user node.current_user
       command "/usr/local/bin/brew tap #{new_resource.name}"
     end
   end
@@ -42,6 +43,7 @@ end
 action :untap do
   if @tap.tapped
     execute "untapping #{new_resource.name}" do
+      user node.current_user
       command "/usr/local/bin/brew untap #{new_resource.name}"
     end
   end
